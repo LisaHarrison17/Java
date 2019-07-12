@@ -1,7 +1,8 @@
 package simulation;
 import simulation.Coordinates;
 
-public class WeatherProvider {
+public class WeatherProvider
+{
     private WeatherProvider weatherProvider = new WeatherProvider();
     private String[] weather; // = new String[*size*];
     private WeatherProvider() {};

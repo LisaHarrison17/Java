@@ -4,12 +4,11 @@ import java.io.PrintWriter;
 
 public class Simulation
 {
-
     public static void main(String args[])
     {
-        if(args.length !=1)
+        if(args.length != 1)
         {
-
+            System.out.println("Supply ONE scenario txt file pls");
         }
         else
         {
@@ -32,10 +31,10 @@ public class Simulation
                     {
                         throw new CustomException("First Line needs to be an int!");
                     }
-                    while((line = filereader.readLine())!= null)
-                    {
-                        name = 
-                    }
+//                    while((line = filereader.readLine()) != null)
+//                    {
+//                        name =
+//                    }
                 }
             }
 
