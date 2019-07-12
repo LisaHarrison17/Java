@@ -37,7 +37,6 @@ public class Simulation
 //                    }
                 }
             }
-
             catch(Exception e)
             {
                 System.out.println("Failed");
