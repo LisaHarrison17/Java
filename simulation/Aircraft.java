@@ -8,7 +8,9 @@ public class Aircraft
     protected String name;
     protected Coordinates coordinates = new Coordinates();
     private long idCounter;
-
-    protected Aircraft(String name, Coordinates coordinates) {};
+    protected Aircraft(String name, Coordinates coordinates)
+    {
+        this.name = name;
+    };
     private long nextId() {};
 }

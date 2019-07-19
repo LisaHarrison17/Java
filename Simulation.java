@@ -57,6 +57,4 @@ public class Simulation
             return false;
         }
     }
-
-
 }
