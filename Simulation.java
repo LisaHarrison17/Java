@@ -1,6 +1,11 @@
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.PrintWriter;
+import java.io.FileReader;
+
+import com.sun.java.util.jar.pack.Package.File;
+
+//import java.io.PrintWriter;
+import simulation.*;
 
 public class Simulation
 {
@@ -14,7 +19,9 @@ public class Simulation
         {
             try
             {
-                BufferedReader filereader = new BufferedReader(new FileReader(args[0]));
+                File log = new File("simulation.txt");
+                FileReader file = new FileReader(args[0]);
+                BufferedReader filereader = new BufferedReader(file);
                 String line = filereader.readLine();
                 int loop = 0;
                 String name;
@@ -36,6 +43,7 @@ public class Simulation
 //                        name =
 //                    }
                 }
+                filereader.close();
             }
             catch(Exception e)
             {
