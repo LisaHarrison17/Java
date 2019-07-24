@@ -10,7 +10,7 @@ public class JetPlane extends Aircraft implements Flyable
     JetPlane(String name, Coordinates coordinates)
     {
         super(name, coordinates);
-    };
+    }
     public void updateConditions()
     {
         String weather = weatherTower.getWeather(coordinates);
@@ -26,6 +26,9 @@ public class JetPlane extends Aircraft implements Flyable
                 this.coordinates = new Coordinates(coordinates.getLongitude(), coordinates.getLatitude(), coordinates.getHeight() - 7);
         }
         //JetPlane#J1(2):
-    };
-    public void registerTower(WeatherTower weatherTower) {};
+    }
+    public void registerTower(WeatherTower weatherTower)
+    {
+        
+    }
 }

@@ -19,5 +19,5 @@ public class AircraftFactory
                 System.out.println("Unknown aircaft type:" + type + ". See scenario file.");
                 return null;
         }
-    };
+    }
 }

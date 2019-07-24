@@ -10,7 +10,7 @@ public class Baloon extends Aircraft implements Flyable
     Baloon(String name, Coordinates coordinates)
     {
         super(name, coordinates);
-    };
+    }
     public void updateConditions()
     {
         String weather = weatherTower.getWeather(coordinates);
@@ -26,9 +26,9 @@ public class Baloon extends Aircraft implements Flyable
                 this.coordinates = new Coordinates(coordinates.getLongitude(), coordinates.getLatitude(), coordinates.getHeight() - 15);
         }
         //Baloon#B1(1):
-    };
+    }
     public void registerTower(WeatherTower weatherTower)
     {
 
-    };
+    }
 }

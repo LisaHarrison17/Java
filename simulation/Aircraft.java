@@ -1,17 +1,20 @@
 package simulation;
 import simulation.Coordinates;
-import java.util.ArrayList;
 
 public class Aircraft
 {
     protected long id;
     protected String name;
-    protected Coordinates coordinates = new Coordinates();
-    private long idCounter;
+    protected Coordinates coordinates;
+    private long idCounter = 1;
     protected Aircraft(String name, Coordinates coordinates)
     {
         this.name = name;
         this.coordinates = coordinates;
-    };
-    private long nextId() {};
+        this.id = nextId();
+    }
+    private long nextId()
+    {
+        return idCounter++;
+    }
 }

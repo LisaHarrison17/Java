@@ -1,11 +1,9 @@
 import java.io.BufferedReader;
-import java.io.File;
+
 import java.io.FileReader;
-
-import com.sun.java.util.jar.pack.Package.File;
-
-//import java.io.PrintWriter;
 import simulation.*;
+//import com.sun.java.util.jar.pack.Package.File;
+//import java.io.PrintWriter;
 
 public class Simulation
 {
@@ -13,13 +11,13 @@ public class Simulation
     {
         if(args.length != 1)
         {
-            System.out.println("Supply ONE scenario txt file pls");
+            System.out.println("Supply ONE scenario text file.");
         }
         else
         {
             try
             {
-                File log = new File("simulation.txt");
+                
                 FileReader file = new FileReader(args[0]);
                 BufferedReader filereader = new BufferedReader(file);
                 String line = filereader.readLine();
@@ -27,7 +25,8 @@ public class Simulation
                 String name;
                 String type;
                 int longitude = 0, latitude = 0, height = 0;
-                String splitLine[];
+                String[] splitLine;
+                WeatherTower weatherTower = new WeatherTower();
                 if(line != null)
                 {
                     if(isNum(line))
@@ -37,17 +36,57 @@ public class Simulation
                     else
                     {
                         throw new CustomException("First Line needs to be an int!");
+                        
                     }
-//                    while((line = filereader.readLine()) != null)
-//                    {
-//                        name =
-//                    }
+                }
+                while((line = filereader.readLine()) != null)
+                {
+                    splitLine = line.split(" ");
+                    if (splitLine.length == 5)
+                    {
+                        type = splitLine[0];
+                        name = splitLine[1];
+                        if (isNum(splitLine[2]))
+                        {
+                            longitude = Integer.parseInt(splitLine[2]);
+                        }
+                        else
+                        {
+                            throw new CustomException("Longitude needs to be a positive integer.");
+                        }
+                        if (isNum(splitLine[3]))
+                        {
+                            latitude = Integer.parseInt(splitLine[3]);
+                        }
+                        else
+                        {
+                            throw new CustomException("Latitude needs to be a positive integer.");
+                        }
+                        if (isNum(splitLine[4]))
+                        {
+                            height = Integer.parseInt(splitLine[4]);
+                        }
+                        else
+                        {
+                            throw new CustomException("Height needs to be a positive integer.");
+                        }
+                        Flyable newAircraft = new AircraftFactory().newAircraft(type, name, longitude, latitude, height);
+                        newAircraft.registerTower(weatherTower);
+                    }
+                    else
+                    {
+                        throw new CustomException("Incorrect scenario structure.");
+                    }
+                }
+                for(int i = 0; i < loop; i++){
+                    weatherTower.changeWeather();
                 }
                 filereader.close();
             }
             catch(Exception e)
             {
-                System.out.println("Failed");
+                System.out.print("Failed");
+                filereader.close();
             }
         }
     }
@@ -58,7 +97,12 @@ public class Simulation
         try
         {
             num = Integer.parseInt(line);
-            return true;
+            if (num >= 0){
+                return true;
+            }
+            else {
+                throw new CustomException("Invalid value");
+            }
         }
         catch (Exception e)
         {
