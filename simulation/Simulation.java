@@ -1,9 +1,6 @@
+package simulation;
 import java.io.BufferedReader;
-
 import java.io.FileReader;
-import simulation.*;
-//import com.sun.java.util.jar.pack.Package.File;
-//import java.io.PrintWriter;
 
 public class Simulation
 {
@@ -17,7 +14,6 @@ public class Simulation
         {
             try
             {
-                
                 FileReader file = new FileReader(args[0]);
                 BufferedReader filereader = new BufferedReader(file);
                 String line = filereader.readLine();
@@ -46,29 +42,15 @@ public class Simulation
                     {
                         type = splitLine[0];
                         name = splitLine[1];
-                        if (isNum(splitLine[2]))
+                        if ((isNum(splitLine[2])) &&  (isNum(splitLine[3])) && (isNum(splitLine[4])))
                         {
                             longitude = Integer.parseInt(splitLine[2]);
-                        }
-                        else
-                        {
-                            throw new CustomException("Longitude needs to be a positive integer.");
-                        }
-                        if (isNum(splitLine[3]))
-                        {
                             latitude = Integer.parseInt(splitLine[3]);
-                        }
-                        else
-                        {
-                            throw new CustomException("Latitude needs to be a positive integer.");
-                        }
-                        if (isNum(splitLine[4]))
-                        {
                             height = Integer.parseInt(splitLine[4]);
                         }
                         else
                         {
-                            throw new CustomException("Height needs to be a positive integer.");
+                            throw new CustomException("Longitude needs to be a positive integer.");
                         }
                         Flyable newAircraft = new AircraftFactory().newAircraft(type, name, longitude, latitude, height);
                         newAircraft.registerTower(weatherTower);
@@ -85,8 +67,7 @@ public class Simulation
             }
             catch(Exception e)
             {
-                System.out.print("Failed");
-                filereader.close();
+                System.out.print("Simulation failed: " + e);
             }
         }
     }

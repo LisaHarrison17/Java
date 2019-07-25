@@ -2,4 +2,5 @@
 
 find . -name "*.java" > sources.txt
 javac -sourcepath . @sources.txt
-java Simulation scenario.txt
+java simulation.Simulation scenario.txt 
+rm simulation/*.class
