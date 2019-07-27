@@ -60,14 +60,15 @@ public class Simulation
                         throw new CustomException("Incorrect scenario structure.");
                     }
                 }
-                for(int i = 0; i < loop; i++){
+                for(int i = 0; i < loop; i++)
+                {
                     weatherTower.changeWeather();
                 }
                 filereader.close();
             }
             catch(Exception e)
             {
-                System.out.print("Simulation failed: " + e);
+                System.out.print("Simulation failed: " + e + "\n");
             }
         }
     }

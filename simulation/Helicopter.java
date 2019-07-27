@@ -17,18 +17,26 @@ public class Helicopter extends Aircraft implements Flyable
         switch(weather)
         {
             case "SUN":
+                FlightLog.Log("Helicopter#" + this.name + "(" + this.id + "): sun...");
                 this.coordinates = new Coordinates(coordinates.getLongitude() + 10, coordinates.getLatitude(), coordinates.getHeight() + 2);
+                break;
             case "RAIN":
+                FlightLog.Log("Helicopter#" + this.name + "(" + this.id + "): rain...");
                 this.coordinates = new Coordinates(coordinates.getLongitude() + 5, coordinates.getLatitude(), coordinates.getHeight());
+                break;
             case "FOG":
+                FlightLog.Log("Helicopter#" + this.name + "(" + this.id + "): fog...");
                 this.coordinates = new Coordinates(coordinates.getLongitude() + 1, coordinates.getLatitude(), coordinates.getHeight());
+                break;
             case "SNOW":
+                FlightLog.Log("Helicopter#" + this.name + "(" + this.id + "): snow...");
                 this.coordinates = new Coordinates(coordinates.getLongitude(), coordinates.getLatitude(), coordinates.getHeight() - 12);
+                break;
         }
-        //Helicopter#H1(3):
     }
     public void registerTower(WeatherTower weatherTower)
     {
-        
+        weatherTower.register(this);
+        FlightLog.Log("Tower says: Helicopter#" + this.name + "(" + this.id + ") registered to weather tower.");
     }
 }
