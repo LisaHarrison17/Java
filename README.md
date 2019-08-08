@@ -1,2 +1,2 @@
-# ajav_launcher
+# ajav-launcher
 First project in java module
